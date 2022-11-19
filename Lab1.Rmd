@@ -1,0 +1,69 @@
+# 1. Створити змінні базових (atomic) типів. Базові типи: character, numeric, integer, complex, logical.
+
+character <- "cat"
+character
+numeric <- 7
+numeric
+integer <- 7L
+integer
+logical <- TRUE
+logical
+complex <- 7+1i
+complex
+
+# 2. Створити вектори, які: містить послідовність з 5 до 75; містить числа 3.14, 2.71, 0, 13; 100 значень TRUE.
+
+vec_1 <- c(5:75)
+vec_1
+vec_2 <- c(3.14, 2.71, 0, 13)
+vec_2
+Vec_3 <- c(rep (TRUE,100))
+Vec_3
+
+# 3. Створити наступну матрицю за допомогою matrix, та за допомогою cbind або rbind 0.5 1.3 3.5 3.9 131 2.8 0 2.2 4.6 2 7 5.1
+
+matrix(c(0.5, 3.9, 0, 2, 1.3, 131, 2.2, 7, 3.5, 2.8, 4.6, 5.1), ncol=3, nrow=4)
+col_1<-c(0.5, 3.9, 0, 2)
+col_2<-c(1.3, 131, 2.2, 7)
+col_3<-c(3.5, 2.8, 4.6, 5.1)
+cbind(col_1, col_2, col_3)
+
+# 4. Створити довільний список (list), в який включити всі базові типи.
+
+my_list <- list(7L, 7, TRUE, 'cat', 7+1i)
+print(my_list)
+
+# 5. Створити фактор з трьома рівнями «baby», «child», «adult».
+
+my_factor <- factor(c("baby", "child", "adult"), levels=c("baby", "child", "adult"))
+my_factor
+
+# 6. Знайти індекс першого значення NA в векторі 1, 2, 3, 4, NA, 6, 7, NA, 9, NA, 11. Знайти кількість значень NA.
+
+my_ind <- c(1, 2, 3, 4, NA, 6, 7, NA, 9, NA, 11) 
+my_ind
+match(NA, my_ind)
+sum(is.na(my_ind))
+
+# 7. Створити довільний data frame та вивести в консоль.
+
+girl <- c("Ira", "Anna", "Alla", "Vika", "Masha") 
+growth <- c(170, 160, 165, 175, 162)
+dF <- data.frame(girl, growth)
+print (dF)
+
+# 8. Змінити імена стовпців цього data frame.
+
+colnames (dF)[1] = "NewGirl" 
+colnames (dF)[2] = "NewGrowth"
+print (dF)
+
+
+
+
+
+
+
+
+
+
