@@ -1,0 +1,49 @@
+#Встановлення бібліотек(один раз запускаємо)
+#install.packages("tidyverse")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+
+#Опис набору даних. Також варто включити опис перемінних з одиницями виміру і набором даних. Зчитування даних. Також може включати злиття даних.
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+
+#встановити мій новий робочий каталог
+setwd("D:/Git repository/DataScienceCourseKNU") 
+getwd()
+
+#Розділити один файл на два щоб показати злиття за допомогою команди rbind command. зчитування даних
+#transfusion <- read.csv("D:/Git repository/DataScienceCourseKNU/transfusion.csv")
+transfusion_1 <- read.csv("D:/Git repository/DataScienceCourseKNU/transfusion_1.csv")
+transfusion_2 <- read.csv("D:/Git repository/DataScienceCourseKNU/transfusion_2.csv")
+
+print(transfusion_1)
+print(transfusion_2)
+
+#злиття двох рядків
+x <- data.frame(transfusion_1)
+y <- data.frame(transfusion_2)
+transfusion <- rbind(x, y)
+
+#показати створений dataframe
+str(transfusion)
+
+#зробити явні відсутні значення неявними 
+drop_na(transfusion)
+
+#встановити всі null як NA
+transfusion[transfusion == 0] <- NA
+
+#відфільтрувати всі NA`s`
+transfusion %>%  
+  filter(if_any(everything(), is.na))
+  
+#видалити всі рядки даних з NA
+na.omit(transfusion) 
+print(transfusion)
+
+#побудувати графік та аналіз даних
+ggplot(data=transfusion, mapping = aes(Recency..months., Frequency..times.))+
+  geom_bar(stat="identity", color="blue")+
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))
